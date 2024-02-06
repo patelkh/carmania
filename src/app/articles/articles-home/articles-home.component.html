@@ -1,0 +1,28 @@
+<div class="container">
+    <div
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+    >
+    
+        <div class="row">
+            <div class="mx-auto mt-5 mb-3 monoton">
+                <h3>Latest News</h3>
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="col-md-4"
+                *ngFor="let article of articles"
+            >
+                <app-card
+                    [article]="article"
+                    [hasImage]="true"
+                    [truncNumber]="200"
+                ></app-card>
+            </div>
+        </div>
+    </div>
+</div>>

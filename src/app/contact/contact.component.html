@@ -1,0 +1,69 @@
+<div class="container container-small contact-container mt-5">
+    <h1>Contact Us</h1>
+    <form
+        *ngIf="contactForm"
+        [formGroup]="contactForm!" 
+        (submit)="submitForm()"
+    >
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input
+                type="text"
+                id="email"
+                class="form-control"
+                formControlName="email"
+            />
+            <p class="error-label"
+                *ngIf="!contactForm.get('email')?.valid &&
+                 contactForm.get('email')?.touched"  
+            >
+                <span *ngIf="contactForm.get('email')?.errors!['required']">Email is required.</span>
+                <span *ngIf="contactForm.get('email')?.errors!['email']">Email format is invalid.</span>
+            </p>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Tell us why you are contacting us:</label>
+            <select 
+                class="form-control"
+                id="subject"
+                formControlName="subject">
+                <option
+                    *ngFor="let item of subjectsForm"
+                    [value]="item"
+                >{{item}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Write us a message:</label>
+            <textarea
+                type="text"
+                id="message"
+                formControlName="message"
+                class="form-control"
+                rows="3"
+            ></textarea>
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >Submit</button>
+        <alert
+            type="danger"
+            *ngIf="onError.show"
+            [dismissOnTimeout]="1500"
+            (onClosed)="resetError()"
+        >{{onError.message}}</alert>
+
+        <alert
+            type="success"
+            *ngIf="onSuccess"
+            [dismissOnTimeout]="1500"
+            (onClosed)="onSuccess = false"
+        >Thank you!</alert>
+
+    </form>
+
+</div>

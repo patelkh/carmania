@@ -1,0 +1,37 @@
+<div class="row newsl-subs">
+    <div class="mx-auto">
+        <h3>Subscribe to our newsletter</h3>
+        <div class="form-group">
+            <form [formGroup]="newsletterForm" (submit)="submitForm()">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    formControlName="email"
+                    placeholder="Enter your email"
+                >
+                <alert
+                    type="danger"
+                    *ngIf="formError.show"
+                    dismissOnTimeout="1500"
+                    (onClosed)="handleError('reset', '')"
+                >{{formError.message}}</alert>
+                <alert 
+                    type="success"
+                    *ngIf="formSuccess"
+                    dismissOnTimeout="1500"
+                    (onClosed)="formSuccess=false"
+                >Thank you for subscribing!</alert>
+                <button
+                    type="submit"
+                    class="btn btn-outline-light mt-3"
+                >Subscribe</button>
+            </form>
+        </div>
+        <div class="disclaimer">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Lorem ipsum dolor sit amet etur adipiscing elit, sed do eiusmod tempor i Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Lorem ipsum dolor sit amet etur adipiscing elit, sed do eiusmod tempor
+            </p>
+        </div>
+    </div>
+</div>

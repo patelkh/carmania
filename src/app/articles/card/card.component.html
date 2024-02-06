@@ -1,0 +1,22 @@
+<a
+    [routerLink]="['articles', article.id]"
+    
+>
+    <div class="card mb-4 box-shadow">
+        <div
+            class="articles-card-image"
+            *ngIf="hasImage" 
+            [ngStyle]="{'background-image': 'url(assets/images/'+article.image+')'}"
+        >
+        </div>
+        <div class="card-body">
+            <small>{{article.created | date: 'fullDate'}}</small>
+            <h5 class="card-title mb-10">{{article.title}}</h5>
+            <hr/>
+            <p class="card-text">
+                {{article.description | truncate: ['200', '...read more']}}
+            </p>
+        </div>
+
+    </div>
+</a>
